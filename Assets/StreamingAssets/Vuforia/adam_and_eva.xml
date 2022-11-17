@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="adam_and_eva" motionHint="static" trackingMode="default"/>
+
+</Tracking>
+
+<Assembly name="adam_and_evas_assembly" assemblyId="4166094433404026afc694b823e4f873">
+<Part name="adam_and_eva" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0001" translation="0.039721 0.624527 2.03496" rotation="AD: 0.9999999999935946 0.0002553851457241945 -0.0140187228832168 182.087" trained="yes">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>
