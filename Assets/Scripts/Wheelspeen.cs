@@ -10,15 +10,13 @@ public class Wheelspeen : MonoBehaviour
     public GameObject sparks1;
     bool IsSpining=true;
     float speed=0f;
-    private Renderer Renderer;
-    private Renderer Renderer1;
-    //public Color sparks;
-    public Texture texture;
-    public Texture texture1;
+    private Renderer RendererSparks;
+    private Renderer RendererSparks1;
+    public Texture2D mainTexture;
     void Start()
     {
-        Renderer = sparks.GetComponent<Renderer>();
-        Renderer1 = sparks1.GetComponent<Renderer>();
+        RendererSparks = sparks.GetComponent<Renderer>();
+        RendererSparks1 = sparks1.GetComponent<Renderer>();
     }
     void Update()
     {
@@ -44,13 +42,33 @@ public class Wheelspeen : MonoBehaviour
         //Wheel.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,0,100), updatee);
         if (!IsSpining)
         {
-            Renderer.material.mainTexture = texture;
-            Renderer1.material.mainTexture = texture;
+            //RendererSparks.material.mainTexture = testTexture;            
+            //Color c = RendererSparks1.material.color;
+
+            /// рабочие значения от 0 до 1
+            /// придумай как менять эти значения.
+            float alpha = 0.5f;
+
+            ////создание текстуры
+            Texture2D _NewTexture = new Texture2D(32, 32);
+
+            Vector4 _Color = new Vector4 (alpha,alpha,alpha,alpha);
+            for (int y = 0; y < 32; y++)
+            {
+             for (int x = 0; x < 32; x++)
+             { 
+                Vector4 _OldColor = mainTexture.GetPixel(x,y);
+                _NewTexture.SetPixel(x, y, (_OldColor - _Color)); 
+             }             
+            }     
+            _NewTexture.Apply();
+            RendererSparks.material.mainTexture = _NewTexture;
+
         }
         else
         {
-            Renderer.material.mainTexture = texture1;
-            Renderer1.material.mainTexture = texture1;
+            RendererSparks.material.mainTexture = mainTexture;
+            RendererSparks1.material.mainTexture = mainTexture;
         }
     }
 }
