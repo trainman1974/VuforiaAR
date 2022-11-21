@@ -13,6 +13,8 @@ public class Wheelspeen : MonoBehaviour
     private Renderer RendererSparks;
     private Renderer RendererSparks1;
     public Texture2D mainTexture;
+    public GameObject StartButton;
+    public GameObject StopButton;
     float alpha = 1f;
     void Start()
     {
@@ -46,6 +48,8 @@ public class Wheelspeen : MonoBehaviour
     public void WheelStop()
     {
         IsSpining = !IsSpining;
+        StartButton.SetActive(!IsSpining);
+        StopButton.SetActive(IsSpining);
     }
     IEnumerator Fade(Renderer RendererSparks, Renderer RendererSparks1, float alpha, Texture2D mainTexture)
     {
