@@ -16,6 +16,7 @@ public class Wheelspeen : MonoBehaviour
     float alpha = 0f;
     void Start()
     {
+        StopButton.SetActive(true);
         RendererSparks1 = sparks1.GetComponent<Renderer>();        
     }
     void FixedUpdate()
@@ -61,7 +62,7 @@ public class Wheelspeen : MonoBehaviour
                     alpha = alpha - 0.03f;
                 }
                 print("alpha " + alpha);
-                // вызов функции
+                // вызов функции 
                 NewTexture();
                 yield return new WaitForSeconds(0.1f);
             }
