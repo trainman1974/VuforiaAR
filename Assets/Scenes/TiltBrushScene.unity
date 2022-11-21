@@ -551,7 +551,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1337795688522688, guid: aa91caff9c3a36e4c938fbe1168f12a9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1359006252043282, guid: aa91caff9c3a36e4c938fbe1168f12a9, type: 3}
       propertyPath: m_Name
@@ -1123,16 +1123,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wheel: {fileID: 942784984}
-  sparks: {fileID: 1923762884}
   sparks1: {fileID: 339764647}
   mainTexture: {fileID: 2800000, guid: 448c9093ac3aecc41a1b6ab64a727073, type: 3}
   StartButton: {fileID: 1967447808}
   StopButton: {fileID: 2073836384}
---- !u!1 &1923762884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1337795688522688, guid: aa91caff9c3a36e4c938fbe1168f12a9, type: 3}
-  m_PrefabInstance: {fileID: 732833495}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1967447808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1967447809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1222,7 +1216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2073836385
 RectTransform:
   m_ObjectHideFlags: 0
