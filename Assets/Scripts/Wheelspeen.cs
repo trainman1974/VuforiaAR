@@ -16,37 +16,73 @@ public class Wheelspeen : MonoBehaviour
     float alpha = 0f;
     void Start()
     {
-        RendererSparks1 = sparks1.GetComponent<Renderer>();
-        StartCoroutine(Fade(RendererSparks1, alpha, mainTexture));
+        StopButton.SetActive(true);
+        RendererSparks1 = sparks1.GetComponent<Renderer>();        
     }
-    void Update()
+    void FixedUpdate()
     {
         if (!IsSpining && speed<=0)
         {
-            speed += 0.0002f;
+            speed += 0.002f;
         }
         if (IsSpining && speed > -0.4f)
         {
-            speed -= 0.0002f;
+            speed -= 0.002f;
         }
-        updatee += Time.deltaTime;
+        //updatee += Time.deltaTime;
+        Wheel.transform.Rotate(0, 0, speed);
+        /*
         if (updatee > 0.01f)
         {
             updatee = 0.0f;
             Wheel.transform.Rotate(0, 0, speed);
         }
+        */
     }
     public void WheelStop()
     {
         IsSpining = !IsSpining;
         StartButton.SetActive(!IsSpining);
         StopButton.SetActive(IsSpining);
-        StartCoroutine(Fade(RendererSparks1, alpha, mainTexture));
+        StartCoroutine(Fade());
     }
-    IEnumerator Fade(Renderer RendererSparks1, float alpha, Texture2D mainTexture)
+    IEnumerator Fade()
     {
-        print("2");
-        alpha = 1f;
+        print("Start Coroutine");
+        // меняем альфу
+        //alpha = 0f;
+            for (int i = 0; i < 32; i++)
+            {
+                if (!IsSpining && alpha <= 1f )
+                {
+                    alpha = alpha + 0.03f;
+                }
+                else if  (IsSpining &&  alpha >= 0.03f )
+                {
+                    alpha = alpha - 0.03f;
+                }
+                print("alpha " + alpha);
+                // вызов функции 
+                NewTexture();
+                yield return new WaitForSeconds(0.1f);
+            }
+               
+        //yield return break;
+        //задаем значения альфы
+        if (!IsSpining)
+        {
+            alpha = 1;
+        }
+        else if  (IsSpining)
+        {
+            alpha = 0;
+        }
+        print("End Coroutine");
+
+
+    }
+    private void NewTexture()
+    {
         Texture2D _NewTexture = new Texture2D(32, 32);
         Vector4 _Color = new Vector4(alpha, alpha, alpha, alpha);
         for (int y = 0; y < 32; y++)
@@ -54,11 +90,14 @@ public class Wheelspeen : MonoBehaviour
             for (int x = 0; x < 32; x++)
             {
                 Vector4 _OldColor = mainTexture.GetPixel(x, y);
-                _NewTexture.SetPixel(x, y, (_OldColor - _Color));
+                _NewTexture.SetPixel(x, y, (_OldColor - _Color));                    
             }
-        }
+        }    
         _NewTexture.Apply();
         RendererSparks1.material.mainTexture = _NewTexture;
-        yield return null;
+        print("New Texture");
+
     }
+
+
 }

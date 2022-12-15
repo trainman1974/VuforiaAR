@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class UserTrackableEventHandler : DefaultObserverEventHandler
 {
-    /*
-    public GameObject _vPlayer;
+   public GameObject _Canvas; 
 
     protected override void OnTrackingFound()
     {
-        //_vPlayer.SetActive (true);
-
-        //videoPlayer _vPlayer = videoPlayer.FindGameObjectWithTag("videoPlayer");
-        //videoPlayer = videoPlayer.FindGameObjectWithTag("videoPlayer");
-        //videoPlayer.Play();
-        
-        GameObject horse = GameObject.FindGameObjectWithTag("Horse");
-        horse.transform.SetParent(this.gameObject.transform, false);
-        base.OnTrackingFound();     
-        
+        _Canvas.SetActive(true);
+        base.OnTrackingFound();    
     }
-
-    public void videoPlayerPlay()
+        protected override void OnTrackingLost()
     {
-        _vPlayer.SetActive(true);
+        _Canvas.SetActive(false);
+        base.OnTrackingFound();    
     }
-    */
+ 
+    
 }
+
