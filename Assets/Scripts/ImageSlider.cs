@@ -5,7 +5,9 @@ using UnityEngine;
 public class ImageSlider : MonoBehaviour
 {
  public Texture2D[] Images = new Texture2D[6];
+ public GameObject Hologram;
  public GameObject FrameMesh;
+ public GameObject ButtonNext;
  private Material FrameMaterial;
  private float elapsedTime = 2f;
  private bool  _finCoroutine = true;
@@ -15,6 +17,7 @@ public class ImageSlider : MonoBehaviour
 
     public void Start()
     {
+        Hologram.SetActive(false);
         FrameMaterial = FrameMesh.GetComponent<MeshRenderer>().material;
 
         //назначаем материал
@@ -24,19 +27,12 @@ public class ImageSlider : MonoBehaviour
 
         FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", offset);
 
-        print("MaterialName " + FrameMaterial );    
+        //print("MaterialName " + FrameMaterial );    
     }
     public void Update()
     {
     }
-        public void SlideRight()
-    {
-        if(_finCoroutine == true)
-        {
-            StartCoroutine(Offset());            
-        }        
-    }
-        public void SlideLeft()
+         public void SlideLeft()
     {
         if(_finCoroutine == true)
         {
@@ -46,14 +42,17 @@ public class ImageSlider : MonoBehaviour
     IEnumerator Offset()
     {
         _finCoroutine = false;
-
+        //включаем голограмму
+        Hologram.SetActive(true);
+        //выключаем кнопку
+        ButtonNext.SetActive(false);
         //сдвигаем картинк влево
         while (offset <= 1)
         {
             offset = (float)(offset + 0.01);            
             FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", offset);
             yield return new WaitForSeconds(0.01f);
-            print("offset picture old "); 
+            //print("offset picture old "); 
         }
         //меняем картинку
         offset = -1;
@@ -64,16 +63,19 @@ public class ImageSlider : MonoBehaviour
             offset = (float)(offset + 0.01);            
             FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", offset);
             yield return new WaitForSeconds(0.01f);
-            print("offset picture new ");
+            print("offset picture new " + offset);
         }
          
         //меняем счетчик массива картинок
+        FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", 0);
         if (countImages < Images.Length - 1 )
         {
             countImages = countImages+1;
         }
         else countImages = 0;
-        _finCoroutine = true;        
+        Hologram.SetActive(false);
+        ButtonNext.SetActive(true);
+        _finCoroutine = true;      
     }
 }
 
