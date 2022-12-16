@@ -68,7 +68,7 @@ public class ImageSlider : MonoBehaviour
         }
          
         //меняем счетчик массива картинок
-        if (countImages < 5)
+        if (countImages < Images.Length - 1 )
         {
             countImages = countImages+1;
         }
