@@ -42,13 +42,15 @@ public class Wheelspeen : MonoBehaviour
     public void WheelStop()
     {
         IsSpining = !IsSpining;
-        StartButton.SetActive(!IsSpining);
-        StopButton.SetActive(IsSpining);
+        //StartButton.SetActive(!IsSpining);
+        //StopButton.SetActive(IsSpining);
         StartCoroutine(Fade());
     }
     IEnumerator Fade()
     {
         print("Start Coroutine");
+        StartButton.SetActive(false);
+        StopButton.SetActive(false);
         // меняем альфу
         //alpha = 0f;
             for (int i = 0; i < 32; i++)
@@ -79,15 +81,18 @@ public class Wheelspeen : MonoBehaviour
         }
         print("End Coroutine");
 
+        StartButton.SetActive(!IsSpining);
+        StopButton.SetActive(IsSpining);
+
 
     }
     private void NewTexture()
     {
-        Texture2D _NewTexture = new Texture2D(32, 32);
+        Texture2D _NewTexture = new Texture2D(16, 16);
         Vector4 _Color = new Vector4(alpha, alpha, alpha, alpha);
-        for (int y = 0; y < 32; y++)
+        for (int y = 0; y < 16; y++)
         {
-            for (int x = 0; x < 32; x++)
+            for (int x = 0; x < 16; x++)
             {
                 Vector4 _OldColor = mainTexture.GetPixel(x, y);
                 _NewTexture.SetPixel(x, y, (_OldColor - _Color));                    
