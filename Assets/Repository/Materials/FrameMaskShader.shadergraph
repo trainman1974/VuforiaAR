@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "e1946e1dceea41d5965ecb73385273f6"
+        },
+        {
+            "m_Id": "07ffb344dec3452891d105fb9ee7ec62"
         }
     ],
     "m_Keywords": [],
@@ -297,8 +300,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1368.0,
-            "y": 22.999996185302736
+            "x": 2100.000244140625,
+            "y": -328.0
         },
         "m_Blocks": [
             {
@@ -314,8 +317,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1368.0,
-            "y": 301.0
+            "x": 2100.000244140625,
+            "y": 44.00002670288086
         },
         "m_Blocks": [
             {
@@ -420,6 +423,27 @@
     },
     "m_Labels": [],
     "m_Channel": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SamplerStateShaderProperty",
+    "m_ObjectId": "07ffb344dec3452891d105fb9ee7ec62",
+    "m_Guid": {
+        "m_GuidSerialized": "150f11f1-e9a8-4e0e-941a-1783b56307d5"
+    },
+    "m_Name": "SamplerState",
+    "m_DefaultReferenceName": "",
+    "m_OverrideReferenceName": "SamplerState_Linear_Repeat",
+    "m_GeneratePropertyBlock": false,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_filter": 0,
+        "m_wrap": 0
+    }
 }
 
 {
@@ -956,9 +980,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1001.0000610351563,
-            "y": 130.0000457763672,
-            "width": 208.00001525878907,
+            "x": 1001.0,
+            "y": 136.00010681152345,
+            "width": 208.0,
             "height": 302.0
         }
     },
