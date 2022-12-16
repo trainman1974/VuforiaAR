@@ -48,11 +48,11 @@ public class ImageSlider : MonoBehaviour
         _finCoroutine = false;
 
         //сдвигаем картинк влево
-        while (offset >= 1)
+        while (offset <= 1)
         {
             offset = (float)(offset + 0.01);            
             FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", offset);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
             print("offset picture old "); 
         }
         //меняем картинку
@@ -63,12 +63,12 @@ public class ImageSlider : MonoBehaviour
         {
             offset = (float)(offset + 0.01);            
             FrameMaterial.SetFloat("Vector1_e1946e1dceea41d5965ecb73385273f6", offset);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
             print("offset picture new ");
         }
          
         //меняем счетчик массива картинок
-        if (countImages < 6)
+        if (countImages < 5)
         {
             countImages = countImages+1;
         }
